@@ -10,7 +10,8 @@ def fmt(s):
     s = html.escape(s, quote=False)
     s = re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', s)
     s = re.sub(r'(?<![\w/])_(.+?)_(?![\w])', r'<i>\1</i>', s)
-    s = re.sub(r'(https?://[^\s<]+)', r'<a href="\1">\1</a>', s)
+    s = re.sub(r'\[(.+?)\]\((https?://[^)\s]+)\)', r'<a href="\2">\1</a>', s)
+    s = re.sub(r'(?<!["=>])(https?://[^\s<]+)', r'<a href="\1">\1</a>', s)
     return s
 
 cards = []
